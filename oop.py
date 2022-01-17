@@ -1,74 +1,30 @@
-import datetime
+from datetime import datetime
+
 class Car:
-    def __init__(self,color,model_name,serial_number,duration_of_existence ):
+    def __init__(self,color,model_name,serial_number,duration_of_existence, present_year = datetime.today().year):
         self.color = color
         self.model_name = model_name
         self.serial_number = serial_number
         self.duration_of_existence = duration_of_existence
-    def show_case(self):
+        self.present_year = present_year
+    def calc_expiry_year(self):
+        return self.present_year + self.duration_of_existence
+        
+    def show_case(self):   
         print('The color of my car is: ', self.color,  'and the model name is : ', self.model_name,'which has a serial number of : ',
-         self.serial_number, 'and will last for about: ',  self.duration_of_existence, 'which from ',
-          present_date, 'to ',  future_date )
-
-
-present_date =datetime.datetime.today()
-print('present_date',str(present_date))
-
-future_date =present_date + datetime.timedelta(days =1460)
-print('future_date_4years:', str(future_date))
-print(future_date-present_date) 
-
-
-x =Car('blue', 'camry', 123456, '4 years ')
-x.show_case()
-
-class Car2:
-        def __init__(self,color,model_name,serial_number,duration_of_existence ):
-             self.color = color
-             self.model_name = model_name
-             self.serial_number = serial_number
-             self.duration_of_existence = duration_of_existence
-
-        def show_out(self):
-            print('The color of my car is: ', self.color,  'and the model name is : ', self.model_name,'which has a serial number of : ',
-            self.serial_number, 'and will last for about: ',  self.duration_of_existence, 'which from ',
-          present_date, 'to ',  future_date )
-
-
-present_date =datetime.datetime.today()
-print('present_date',str(present_date))
-
-future_date =present_date + datetime.timedelta(days =2190)
-print('future_date_6years:', str(future_date))
-print(future_date-present_date) 
-
-
-x =Car2('red', 'forerunner', 123457, '6 years ')
-x.show_out()
-
-class Car3:
-    def __init__(self,color,model_name,serial_number,duration_of_existence ):
-        self.color = color
-        self.model_name = model_name
-        self.serial_number = serial_number
-        self.duration_of_existence = duration_of_existence
+         self.serial_number, 'and will last for about: ',
+          self.duration_of_existence, 'which is from present year to  ',self.calc_expiry_year() )
     
 
-    def show_forth(self):
-            print('The color of my car is: ', self.color,  'and the model name is : ', self.model_name,'which has a serial number of : ',
-            self.serial_number, 'and will last for about: ',  self.duration_of_existence, 'which from ',
-          present_date, 'to ',  future_date )
 
 
-present_date =datetime.datetime.today()
-print('present_date',str(present_date))
 
-future_date =present_date + datetime.timedelta(days =1095)
-print('future_date_3years:', str(future_date))
-print(future_date-present_date) 
-
-
-x =Car3('green', 'mazda', 123458, '3 years ')
-x.show_forth()
-
-              
+x =Car('blue', 'camry', 123456, 4)
+y =Car('red', 'Forerunner', 123457, 6,)
+z = Car('green','madza', 123458, 8)
+x.show_case()
+x.calc_expiry_year()
+y.show_case()
+y.calc_expiry_year()
+z.show_case()
+z.calc_expiry_year()
